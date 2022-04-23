@@ -1,27 +1,20 @@
 #include "MapGeneric.h"
 
 std::vector<int> MapGeneric::map(std::vector<int> input_vector) {
+    // base case when size is 1
     if (input_vector.size() == 1) {
-        // change last value
-        input_vector[0] = input_vector[0]*3;
-        return input_vector;
+        // map final element 
+        mapped_vector.insert(mapped_vector.begin(),f(input_vector.at(0)));
+        // return result
+        return mapped_vector;
     } else {
-        // store last value
-        int temp = input_vector.back();
-        
-        // map last value
-        temp = temp * 3;
-
-        // erase last value
-        input_vector.erase(input_vector.end()-1);
-
-        // call function again
-        map(input_vector);
-
-        // push back value
-        input_vector.push_back(temp);
-
-        // return
-        return input_vector;
+        // map and store last element
+        int temp = f(input_vector.back());
+        // delete last element
+        input_vector.pop_back();
+        // insert mapped element at start of vector
+        mapped_vector.insert(mapped_vector.begin(),temp);
+        // call function again until size of input is 1
+        return map(input_vector);
     }
 }

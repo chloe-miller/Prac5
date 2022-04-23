@@ -10,11 +10,13 @@ int main () {
     vector<int> myVec;
 
     for (int i =0; i<10; i++) {
-        myVec.push_back(i*10);
+        myVec.push_back(i*-10);
     }
 
     MapTriple * trip = new MapTriple;
-    myVec = trip->map(myVec);
+    MapSquare * square = new MapSquare;
+    MapAbsoluteValue * abs = new MapAbsoluteValue;
+    myVec = abs->map(myVec);
     
     for (int i =0; i<10; i++) {
         cout<<myVec[i]<<endl;

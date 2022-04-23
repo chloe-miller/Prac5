@@ -4,7 +4,8 @@
 
 // returns input squared
 class MapSquare : public MapGeneric {
-
+    private:
+        virtual int f(int x);
 };
 
 #endif

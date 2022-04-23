@@ -4,7 +4,8 @@
 
 // returns absolute value of input
 class MapAbsoluteValue : public MapGeneric {
-
+    private:
+        int f(int x);
 };
 
 #endif

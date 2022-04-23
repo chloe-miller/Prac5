@@ -8,8 +8,7 @@ class MapTriple : public MapGeneric {
     virtual int f(int x); // virtual
 
     public:
-    // virtual
-    virtual std::vector<int> map(std::vector<int> input_vector); // recursive
+    std::vector<int> map(std::vector<int> input_vector); // recursive
 };
 
 #endif
