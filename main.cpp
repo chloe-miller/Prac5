@@ -24,17 +24,35 @@ int main () {
     // read in values
     getline(cin,data);
 
-    stringstream ss(data);
+    //stringstream ss(data);
+    int temp;
+    string str;
+    for (int i =0; i<data.length(); i++) {
+        if (data.at(i) != ',') {
+            str = str + data.at(i);
+        } else {
+            stringstream parse;
+            parse << str;
+            str = " ";
+            parse >> temp;
+            L.push_back(temp);
+        }
+    }
+
+    stringstream parse;
+    parse << str;
+    parse >> temp;
+    L.push_back(temp);
 
     // extract comma, parse values, store in L
-    while (ss.good()) {
+    /*while (ss.good()) {
         string stemp;
         if (stemp != "\n") {
             getline(ss,stemp,',');
             int itemp = stoi(stemp); // convert to int
             L.push_back(itemp); 
         }
-    }
+    }*/
 
     // create map objects
     MapTriple * triple = new MapTriple;
