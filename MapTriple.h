@@ -5,10 +5,7 @@
 // returns input x 3
 class MapTriple : public MapGeneric {
     private:
-    virtual int f(int x); // virtual
-
-    public:
-    std::vector<int> map(std::vector<int> input_vector); // recursive
+        virtual int f(int x); // virtual
 };
 
 #endif

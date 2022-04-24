@@ -1,42 +1,61 @@
-/*#include "MapGeneric.h"
+#include "MapGeneric.h"
 #include "MapTriple.h"
 #include "MapSquare.h"
-#include "MapAbsoluteValue.h"*/
+#include "MapAbsoluteValue.h"
 #include "FilterGeneric.h"
 #include "FilterOdd.h"
 #include "FilterNonPositive.h"
 #include "FilterForTwoDigitPositive.h"
+#include "ReduceGeneric.h"
+#include "ReduceGCD.h"
+#include "ReduceMinimum.h"
 #include <iostream>
 #include <vector>
+#include <string>
+#include <sstream>
+
+using namespace std;
 
 int main () {
 
-    std::vector<int> myVec;
-    myVec.push_back(-4);
-    myVec.push_back(-7);
-    myVec.push_back(8);
-    myVec.push_back(9);
-    myVec.push_back(-34);
-    myVec.push_back(54);
+    vector<int> L;
+    string data;
+    cout<<"Enter 20 values: ";
+    
+    // read in values
+    getline(cin,data);
 
-    for (int i =0; i<myVec.size(); i++) {
-        std::cout<<myVec.at(i)<<std::endl;
+    stringstream ss(data);
+
+    // extract comma, parse values, store in L
+    while (ss.good()) {
+        string stemp;
+        getline(ss,stemp,',');
+        int itemp = stoi(stemp); // convert to int
+        L.push_back(itemp);
     }
 
+    // create map objects
+    MapTriple * triple = new MapTriple;
+    MapAbsoluteValue * absolute = new MapAbsoluteValue;
+
+    vector<int> L1;
+    L1 = triple->map(L); // triple
+    L1 = absolute->map(L1); // absolute value
+
+    vector<int> L2;
+    FilterForTwoDigitPositive * twodig = new FilterForTwoDigitPositive;
     FilterOdd * odd = new FilterOdd;
-    FilterNonPositive * neg = new FilterNonPositive;
-    FilterForTwoDigitPositive * num = new FilterForTwoDigitPositive;
-    myVec=num->filter(myVec);
+    L2 = twodig->filter(L1);
+    L2 = odd->filter(L2);
 
-    std::cout<<"Filtered: "<<std::endl;
-    for (int i =0; i<myVec.size(); i++) {
-        std::cout<<myVec.at(i)<<std::endl;
-    }
 
-    /*MapTriple * trip = new MapTriple;
-    MapSquare * square = new MapSquare;
-    MapAbsoluteValue * abs = new MapAbsoluteValue;
-    myVec = abs->map(myVec);*/
+    ReduceGCD * reduce_gcd = new ReduceGCD;
+    ReduceMinimum * reduce_min = new ReduceMinimum;
+    int gcd = reduce_gcd->reduce(L2);
+    int min = reduce_min->reduce(L2);
+
+    cout<<min<<" "<<gcd<<endl;
 
     return 0;
 }
