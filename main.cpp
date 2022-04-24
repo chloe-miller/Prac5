@@ -20,8 +20,8 @@ int main () {
 
     vector<int> L;
     string data;
-    cout<<"Enter 20 values: ";
-    
+    //cout<<"Enter 20 values: ";
+
     // read in values
     getline(cin,data);
 
@@ -33,6 +33,10 @@ int main () {
         getline(ss,stemp,',');
         int itemp = stoi(stemp); // convert to int
         L.push_back(itemp);
+    }
+
+    for (int i =0; i<L.size(); i++) {
+        cout<<L.at(i)<<endl;
     }
 
     // create map objects
