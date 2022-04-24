@@ -1,4 +1,5 @@
 #include "FilterGeneric.h"
+#include <vector>
 
 std::vector<int> FilterGeneric::filter(std::vector<int> input_vector) {
     if (input_vector.size() == 1) {

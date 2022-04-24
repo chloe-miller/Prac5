@@ -1,4 +1,5 @@
 #include "ReduceGeneric.h"
+#include <vector>
 
 int ReduceGeneric::reduce(std::vector<int> myVec) {
     // when size gets to 1, return final value

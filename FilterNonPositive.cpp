@@ -1,4 +1,5 @@
 #include "FilterNonPositive.h"
+#include "FilterGeneric.h"
 
 bool FilterNonPositive::g(int x) {
     if (x>0) {

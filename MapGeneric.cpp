@@ -1,4 +1,5 @@
 #include "MapGeneric.h"
+#include <vector>
 
 std::vector<int> MapGeneric::map(std::vector<int> input_vector) {
     // base case when size is 1
